@@ -1,6 +1,7 @@
 import subprocess
 def install(name):
 	subprocess.call(['pip','install',name])
+install('opencv-python')
 import cv2
 fcd=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 ecd=cv2.CascadeClassifier('haarcascade_eye_tree_eyeglasses.xml')
