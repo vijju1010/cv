@@ -13,13 +13,14 @@ while(cap.isOpened()):
 	fc=fcd.detectMultiScale(gray,1.1,4)
 	for(x,y,w,h) in fc:
 		cv2.rectangle(f,(x,y),(x+w,y+h),(255,255,0),2)
+		cv2.putText(f,'Face',(x,y+10),(cv2.FONT_HERSHEY_SIMPLEX),.5,(255,255,0),1,cv2.LINE_AA)
 		roigr=gray[y:y+h,x:x+w]
 		roicr=f[y:y+h,x:x+w]
 		eye=ecd.detectMultiScale(roigr)
 		for (ex,ey,eh,ew) in eye:
+			cv2.putText(roicr,'Eye',(ex,ey+10),(cv2.FONT_HERSHEY_SIMPLEX),.4,(255,255,0),1,cv2.LINE_AA)
 			cv2.rectangle(roicr,(ex,ey),(ex+ew,ey+eh),(255,255,2))
-		
-	cv2.imshow("cl",f)	
+		cv2.imshow("cl",f)	
 	if cv2.waitKey(1)&0xFF==ord('q'):
 		break
 cap.release()
